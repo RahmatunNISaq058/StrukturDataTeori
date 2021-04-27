@@ -1,0 +1,82 @@
+//Modul4_Latihan_2_1
+#include <stdio.h>
+#include <stdlib.h>
+
+struct node {
+	int n;
+	struct node *next;
+};
+struct node *head=NULL, *tail, *curr;
+
+void clear(void);
+void insertAkhir(int n);
+void bubbleSort(struct node *head);
+void swap(struct node *a, struct node *b);
+void tampilkan(struct node *head);
+
+main()
+{
+	int n, x;
+	char jawab;
+	//struct node *head=NULL;
+
+	printf("Masukkan jumlah node yang ingin dimasukkan: ");
+	scanf("%d", &n);
+	if(n>2 && n<=n)
+	{
+	while(n-- > 0)
+	{
+		printf("Masukkan data yang ingin dimasukkan dalam node: ");
+		scanf("%d", &x);
+		insertAkhir(x);
+	}
+}
+
+else {
+	printf("Tidak dapat melakukan input.\n");
+    clear();
+	system("PAUSE");
+	return 0;
+}
+	printf("Data linked list: ");
+	curr=head;
+	while(curr!=NULL)
+	{
+		printf("%d ", curr->n);
+		curr=curr->next;
+	}
+	printf("\n");
+
+clear();
+printf("\n");
+system("PAUSE");
+return 0;
+}
+
+
+
+void clear(void)
+{
+	curr=head;
+	while(curr!=NULL)
+	{
+		head=head->next;
+		free(curr);
+		curr=head;
+	}
+}
+
+void insertAkhir(int n) {
+	curr=(struct node *)malloc(sizeof(struct node));
+	curr->n=n;
+	if(head==NULL)
+	{
+		head=tail=curr;
+	}
+	else
+	{
+		tail->next=curr;
+		tail=curr;
+	}
+	tail->next=NULL;
+}
